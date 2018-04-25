@@ -6,7 +6,7 @@
 #    By: kbedene <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 13:50:54 by kbedene           #+#    #+#              #
-#    Updated: 2018/03/03 15:53:12 by kbedene     ###    #+. /#+    ###.fr      #
+#    Updated: 2018/04/25 18:47:26 by tduverge    ###    #+. /#+    ###.fr      #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC =\
 	ft_strrev ft_strsplit ft_strstr ft_strsub ft_strtolower ft_strtoupper\
 	ft_strtrim ft_swap ft_tolower ft_toupper ft_lstpush ft_lstlen ft_del\
 	ft_bubble_sort ft_merge_sort ft_strnjoin ft_lstprint_nb\
-	get_next_line
+	get_next_line ft_atol
 
 SRC_PRINTF =\
 		   ft_printf flags\

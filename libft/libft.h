@@ -6,7 +6,7 @@
 /*   By: kbedene <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/28 09:38:27 by kbedene      #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/17 17:28:07 by kbedene     ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/25 22:56:16 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -36,7 +36,8 @@ typedef struct			s_lastbuf
 	struct s_lastbuf	*next;
 }						t_lastbuf;
 
-int						get_next_line(const int fd, char **line, int clear);
+long					ft_atol(const char *str, int *check);
+int						get_next_line(const int fd, char **line);
 void					*ft_memset(void *b, int c, size_t len);
 void					ft_bzero(void *s, size_t n);
 void					*ft_memcpy(void *dst, const void *src, size_t n);

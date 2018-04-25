@@ -6,7 +6,7 @@
 /*   By: lotoussa <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/07 18:47:53 by lotoussa     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/25 16:45:44 by tduverge    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/25 22:52:56 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -79,7 +79,7 @@ int				ft_links(t_list **rooms, char *links, char **stock)
 	i = 0;
 	if (!(ft_first_link(rooms, links)))
 		return (0);
-	while (get_next_line(0, &line, 0) > 0)
+	while (get_next_line(0, &line) > 0)
 	{
 		ft_stock(stock, line);
 		if (ft_comment_links(line))

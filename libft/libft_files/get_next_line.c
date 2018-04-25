@@ -6,7 +6,7 @@
 /*   By: kbedene <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/06 11:43:59 by kbedene      #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/17 19:12:21 by lotoussa    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/25 23:55:10 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,6 +35,7 @@ static int		fd_next_line(int fd, char **line, char **lastbuf)
 	int		i;
 
 	i = 0;
+	*lastbuf = *lastbuf ? *lastbuf : ft_memalloc(1);
 	if ((next = ft_strchr(*lastbuf, '\n')))
 		return (no_read(line, lastbuf, next));
 	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
@@ -54,29 +55,47 @@ static int		fd_next_line(int fd, char **line, char **lastbuf)
 	return (i ? i : ret);
 }
 
-static int		clear_get(t_lastbuf *lst)
+static int		clear_buf(int fd, t_lastbuf **lst, int ret)
 {
-	if (lst->next)
-		clear_get(lst->next);
-	free(lst->lastbuf);
-	free(lst);
-	return (1);
+	t_lastbuf	*tmp;
+	t_lastbuf	*before;
+
+	if (ret == 1)
+		return (ret);
+	before = *lst;
+	if (before->fd != fd)
+		while (before->next->fd != fd)
+			before = before->next;
+	tmp = *lst;
+	while (tmp->fd != fd)
+		tmp = tmp->next;
+	if (tmp == *lst)
+	{
+		*lst = tmp->next;
+		ft_memdel((void**)&(tmp->lastbuf));
+		ft_memdel((void**)&tmp);
+	}
+	else
+	{
+		before->next = tmp->next;
+		ft_memdel((void**)&(tmp->lastbuf));
+		ft_memdel((void**)&tmp);
+	}
+	return (ret);
 }
 
-int				get_next_line(int fd, char **line, int clear)
+int				get_next_line(int fd, char **line)
 {
 	static t_lastbuf	*lst;
 	t_lastbuf			*cur;
 
-	if (clear)
-		return (clear_get(lst));
 	if (lst)
 	{
 		cur = lst;
 		while (cur && cur->fd != fd)
 			cur = cur->next;
 		if (cur)
-			return (fd_next_line(fd, line, &cur->lastbuf));
+			return (clear_buf(fd, &lst, fd_next_line(fd, line, &cur->lastbuf)));
 	}
 	if (!(cur = (t_lastbuf *)malloc(sizeof(t_lastbuf))))
 		return (-1);
@@ -88,5 +107,5 @@ int				get_next_line(int fd, char **line, int clear)
 	lst = cur;
 	if (!(cur->lastbuf = (char *)ft_memalloc(sizeof(char))))
 		return (-1);
-	return (fd_next_line(fd, line, &cur->lastbuf));
+	return (clear_buf(fd, &lst, fd_next_line(fd, line, &cur->lastbuf)));
 }

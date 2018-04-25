@@ -6,7 +6,7 @@
 /*   By: lotoussa <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/06 15:34:16 by lotoussa     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/25 17:59:40 by tduverge    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/25 22:53:05 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,7 @@ static int		ft_ants(char **stock)
 
 	i = 0;
 	line = NULL;
-	while (get_next_line(0, &line, 0) > 0)
+	while (get_next_line(0, &line) > 0)
 	{
 		ft_stock(stock, line);
 		if (line[0] != '#')

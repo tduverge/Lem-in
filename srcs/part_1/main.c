@@ -6,7 +6,7 @@
 /*   By: lotoussa <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/06 15:31:31 by lotoussa     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/25 17:58:50 by tduverge    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/25 22:53:23 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,6 @@
 
 static int		ex_prg(t_list *rooms, int err, int first, char *stock)
 {
-	get_next_line(0, NULL, 1);
 	if (err == -1 && !first)
 	{
 		ft_printf("ERROR\n");
@@ -23,7 +22,6 @@ static int		ex_prg(t_list *rooms, int err, int first, char *stock)
 	}
 	if (stock)
 		ft_memdel((void**)&stock);
-	stock = (char *)stock;
 	if (!rooms)
 		return (err);
 	if (rooms)
