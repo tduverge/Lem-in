@@ -6,7 +6,7 @@
 /*   By: lotoussa <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/06 15:26:50 by lotoussa     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/25 17:02:36 by tduverge    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/25 18:11:46 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -51,6 +51,7 @@ typedef struct			s_node
  ** part_1 functions
 */
 
+int						ft_norm(char **links, char *line, int ret, int get);
 int						ft_parsing(t_room **start, t_list **rooms, char **stoc);
 int						ft_get_rooms(t_list **rooms, t_room **start,
 		char **links, char **stock);
@@ -68,6 +69,7 @@ int						ft_free_n_return(char *stock, char *links, int ret);
  ** part_2 functions
 */
 
+int						*ft_search_endroom(t_node *nodes_q);
 int						**ft_second_part(t_room *start, t_list *rooms);
 int						ft_count_max_path(t_room *start, t_list *rooms);
 int						*ft_get_shortest_path(int **paths, t_room *start,

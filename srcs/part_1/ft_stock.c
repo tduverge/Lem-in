@@ -6,12 +6,20 @@
 /*   By: lotoussa <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/23 17:11:46 by lotoussa     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/25 15:31:59 by tduverge    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/25 18:28:35 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/header.h"
+
+int		ft_norm(char **links, char *line, int ret, int get)
+{
+	*links = (get == 1 ? ft_strdup(line) : ft_memalloc(1));
+	if (get)
+		ft_memdel((void**)&line);
+	return (ret);
+}
 
 int		ft_stock(char **stock, char *line)
 {

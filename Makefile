@@ -6,7 +6,7 @@
 #    By: lotoussa <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/03/06 15:23:44 by lotoussa     #+#   ##    ##    #+#        #
-#    Updated: 2018/04/24 21:08:53 by tduverge    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/04/25 18:05:36 by tduverge    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -17,7 +17,7 @@ NAME = lem-in
 
 CC = gcc
 
-CFLAGS = -Werror -Wextra -Wall -ggdb
+CFLAGS = -Werror -Wextra -Wall
 
 D_SRC = srcs/
 

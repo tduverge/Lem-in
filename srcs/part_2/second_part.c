@@ -6,12 +6,23 @@
 /*   By: lotoussa <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/03 18:35:51 by lotoussa     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/23 18:17:28 by lotoussa    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/25 18:07:30 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../includes/header.h"
+
+int			*ft_search_endroom(t_node *nodes_q)
+{
+	while (nodes_q)
+	{
+		if (nodes_q->room->pos == E)
+			return (nodes_q->path);
+		nodes_q = nodes_q->next;
+	}
+	return (NULL);
+}
 
 int			**ft_second_part(t_room *start, t_list *rooms)
 {

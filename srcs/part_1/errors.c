@@ -6,7 +6,7 @@
 /*   By: lotoussa <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/07 18:50:40 by lotoussa     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/25 15:20:55 by tduverge    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/25 18:35:27 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -65,13 +65,14 @@ int			ft_is_valid_room(char *line)
 	int		count;
 
 	i = 0;
-	while (line[i] && line[i] == ' ')
+	while (line[i] == ' ')
 		i++;
 	while (line[i] && line[i] != ' ')
 		i++;
 	count = (line[i++] == ' ' ? 1 : 0);
 	while (line[i] == ' ')
 		i++;
+	line[i] == '-' ? i++ : 0;
 	while (ft_isdigit(line[i]))
 		i++;
 	count += (line[i++] == ' ' ? 1 : 0);
@@ -79,6 +80,7 @@ int			ft_is_valid_room(char *line)
 		i++;
 	if (count != 2)
 		return (0);
+	line[i] == '-' ? i++ : 0;
 	while (ft_isdigit(line[i]))
 		i++;
 	return (line[i] ? 0 : 1);

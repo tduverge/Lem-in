@@ -6,7 +6,7 @@
 /*   By: lotoussa <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/06 17:39:38 by lotoussa     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/25 18:04:52 by tduverge    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/25 18:38:23 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,8 +44,8 @@ static int	get_node(t_list **rooms, char *line, int pos, char **stock)
 {
 	char	**splits;
 	char	*name;
-	int		x;
-	int		y;
+	long		x;
+	long		y;
 
 	if (pos == E)
 	{
@@ -54,15 +54,15 @@ static int	get_node(t_list **rooms, char *line, int pos, char **stock)
 		ft_stock(stock, line);
 	}
 	if (!ft_is_valid_room(line))
-		return (ft_free_n_return(line, NULL, 0));
+		return (0);
 	splits = ft_strsplit(line, ' ');
 	name = ft_strdup(splits[0]);
-	x = ft_atoi(splits[1]);
-	y = ft_atoi(splits[2]);
+	x = ft_atol(splits[1]);
+	y = ft_atol(splits[2]);
 	if (x < MI || x > MA || y < MI || y > MA || ft_is_known(name, *rooms))
 	{
 		ft_memdel((void**)&name);
-		return (ft_free_split(line, splits, 0));
+		return (ft_free_split(NULL, splits, 0));
 	}
 	ft_lstpush(rooms, lstnew_room(name, pos == X ? X : E, x, y));
 	return (ft_free_split(line, splits, 1));
@@ -80,14 +80,13 @@ static int	get_start(t_list **rooms, char *line, t_room **start, char **stock)
 	if (!(ft_stock(stock, line)))
 		return (0);
 	if (!ft_is_valid_room(line))
-		return (ft_free_n_return(line, NULL, 0));
+		return (0);
 	splits = ft_strsplit(line, ' ');
 	name = ft_strdup(splits[0]);
 	x = ft_atoi(splits[1]);
 	y = ft_atoi(splits[2]);
-	if (x < 0 || x > 2147483647 || y < 0 || y > 2147483647
-			|| ft_is_known(name, *rooms))
-		return (ft_free_split(line, splits, 0));
+	if (x < MI || x > MA || y < MI || y > MA || ft_is_known(name, *rooms))
+		return (ft_free_split(NULL, splits, 0));
 	ft_lstpush(rooms, lstnew_room(name, S, x, y));
 	*start = (t_room *)(*rooms)->content;
 	return (ft_free_split(line, splits, 1));
@@ -119,8 +118,5 @@ int			ft_get_rooms(t_list **rooms, t_room **start, char **links,
 		else
 			ret = get_node(rooms, line, X, stock);
 	}
-	*links = get == 1 ? ft_strdup(line) : ft_memalloc(1);
-	if (get)
-		ft_memdel((void**)&line);
-	return (ret);
+	return (ft_norm(links, line, ret, get));
 }

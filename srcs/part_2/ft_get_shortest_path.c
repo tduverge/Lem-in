@@ -6,7 +6,7 @@
 /*   By: kbedene <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/09 12:06:25 by kbedene      #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/24 21:12:24 by tduverge    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/25 18:07:53 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -108,17 +108,6 @@ int				add_node(t_node *node)
 		link = link->next;
 	}
 	return (1);
-}
-
-int				*ft_search_endroom(t_node *nodes_q)
-{
-	while (nodes_q)
-	{
-		if (nodes_q->room->pos == E)
-			return (nodes_q->path);
-		nodes_q = nodes_q->next;
-	}
-	return (NULL);
 }
 
 int				*ft_get_shortest_path(int **paths, t_room *start, t_list *rooms)
