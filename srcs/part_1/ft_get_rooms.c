@@ -6,7 +6,7 @@
 /*   By: lotoussa <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/06 17:39:38 by lotoussa     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/24 16:50:52 by lotoussa    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/25 18:04:52 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,14 +21,11 @@ int			ft_free_split(char *line, char **splits, int ret)
 	if (splits)
 	{
 		while (splits[i])
-			free(splits[i++]);
-		free(splits);
+			ft_memdel((void**)&(splits[i++]));
+		ft_memdel((void**)&splits);
 	}
 	if (line)
-	{
-		free(line);
-		line = NULL;
-	}
+		ft_memdel((void**)&line);
 	return (ret);
 }
 
@@ -52,23 +49,19 @@ static int	get_node(t_list **rooms, char *line, int pos, char **stock)
 
 	if (pos == E)
 	{
-		free(line);
+		ft_memdel((void**)&line);
 		get_next_line(0, &line, 0);
 		ft_stock(stock, line);
 	}
 	if (!ft_is_valid_room(line))
-	{
-		free(line);
-		return (0);
-	}
+		return (ft_free_n_return(line, NULL, 0));
 	splits = ft_strsplit(line, ' ');
 	name = ft_strdup(splits[0]);
 	x = ft_atoi(splits[1]);
 	y = ft_atoi(splits[2]);
-	if (x < 0 || x > 2147483647 || y < 0 || y > 2147483647
-			|| ft_is_known(name, *rooms))
+	if (x < MI || x > MA || y < MI || y > MA || ft_is_known(name, *rooms))
 	{
-		free(name);
+		ft_memdel((void**)&name);
 		return (ft_free_split(line, splits, 0));
 	}
 	ft_lstpush(rooms, lstnew_room(name, pos == X ? X : E, x, y));
@@ -82,7 +75,7 @@ static int	get_start(t_list **rooms, char *line, t_room **start, char **stock)
 	int		x;
 	int		y;
 
-	free(line);
+	ft_memdel((void**)&line);
 	get_next_line(0, &line, 0);
 	if (!(ft_stock(stock, line)))
 		return (0);
@@ -105,9 +98,10 @@ int			ft_get_rooms(t_list **rooms, t_room **start, char **links,
 {
 	char	*line;
 	int		ret;
+	int		get;
 
 	ret = 1;
-	while (ret && get_next_line(0, &line, 0) > 0)
+	while (ret && (get = get_next_line(0, &line, 0)) > 0)
 	{
 		if (!(ft_stock(stock, line)))
 			return (0);
@@ -120,12 +114,13 @@ int			ft_get_rooms(t_list **rooms, t_room **start, char **links,
 				ret = !ft_strcmp(line, "##start") ? get_start(rooms, line,
 						start, stock) : get_node(rooms, line, E, stock);
 			else
-				free(line);
+				ft_memdel((void**)&line);
 		}
 		else
 			ret = get_node(rooms, line, X, stock);
 	}
-	if (line[0] == 'L' || (ret && (*links = ft_strdup(line)) && line && *line))
-		free(line);
+	*links = get == 1 ? ft_strdup(line) : ft_memalloc(1);
+	if (get)
+		ft_memdel((void**)&line);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: lotoussa <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/07 18:47:53 by lotoussa     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/24 16:38:23 by lotoussa    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/25 16:45:44 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -66,7 +66,7 @@ int				ft_first_link(t_list **rooms, char *links)
 			ft_attribute_links(*rooms, splits[0], splits[1]);
 		ft_free_split(NULL, splits, 0);
 	}
-	free(links);
+	ft_memdel((void**)&links);
 	return (1);
 }
 
@@ -90,7 +90,7 @@ int				ft_links(t_list **rooms, char *links, char **stock)
 				ft_attribute_links(*rooms, splits[0], splits[1]);
 			ft_free_split(NULL, splits, 0);
 		}
-		free(line);
+		ft_memdel((void**)&line);
 	}
 	return (1);
 }

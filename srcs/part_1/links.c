@@ -6,7 +6,7 @@
 /*   By: kbedene <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/12 12:24:42 by kbedene      #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/23 16:54:54 by lotoussa    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/25 15:23:23 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,7 @@ void		free_links(t_link *links)
 		return ;
 	if (links->next)
 		free_links(links->next);
-	free(links);
+	ft_memdel((void**)&links);
 }
 
 t_link		*ft_create_link(t_room *room)

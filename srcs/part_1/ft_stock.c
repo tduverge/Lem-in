@@ -6,7 +6,7 @@
 /*   By: lotoussa <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/23 17:11:46 by lotoussa     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/23 17:11:48 by lotoussa    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/25 15:31:59 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,16 +20,16 @@ int		ft_stock(char **stock, char *line)
 	tmp = *stock;
 	if (!(*stock = ft_strjoin(*stock, line)))
 	{
-		free (tmp);
+		ft_memdel((void**)&tmp);
 		return (0);
 	}
-	free(tmp);
+	ft_memdel((void**)&tmp);
 	tmp = *stock;
 	if (!(*stock = ft_strjoin(*stock, "\n")))
 	{
-		free(tmp);
+		ft_memdel((void**)&tmp);
 		return (0);
 	}
-	free(tmp);
+	ft_memdel((void**)&tmp);
 	return (1);
 }

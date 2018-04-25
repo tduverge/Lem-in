@@ -6,7 +6,7 @@
 /*   By: lotoussa <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/07 18:50:40 by lotoussa     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/24 16:22:02 by lotoussa    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/25 15:20:55 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,7 @@ int			ft_check_rooms(t_list *rooms, char *links)
 	{
 		if (ft_strchr(room(rooms).name, '-'))
 		{
-			free(links);
+			ft_memdel((void**)&links);
 			return (0);
 		}
 		ext += (room(rooms).pos == 0 || room(rooms).pos == 1 ? 1 : 0);

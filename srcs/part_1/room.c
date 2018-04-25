@@ -6,7 +6,7 @@
 /*   By: lotoussa <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/06 16:49:37 by lotoussa     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/24 15:26:48 by lotoussa    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/25 17:12:44 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,7 @@ t_list		*lstnew_room(char *name, int pos, int x, int y)
 
 	tmp = create_room(name, pos, x, y);
 	new = ft_lstnew(tmp, sizeof(t_room));
-	free(tmp);
+	ft_memdel((void**)&tmp);
 	return (new);
 }
 

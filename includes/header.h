@@ -6,7 +6,7 @@
 /*   By: lotoussa <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/06 15:26:50 by lotoussa     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/24 21:09:44 by tduverge    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/25 17:02:36 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,6 +19,8 @@
 # define S 0
 # define E 1
 # define X 2
+# define MI -2147483648
+# define MA 2147483647
 
 typedef struct			s_link
 {
@@ -49,7 +51,7 @@ typedef struct			s_node
  ** part_1 functions
 */
 
-int						ft_parsing(t_room **start, t_list **rooms);
+int						ft_parsing(t_room **start, t_list **rooms, char **stoc);
 int						ft_get_rooms(t_list **rooms, t_room **start,
 		char **links, char **stock);
 int						ft_links(t_list **rooms, char *links, char **stock);

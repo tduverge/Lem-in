@@ -6,7 +6,7 @@
 /*   By: lotoussa <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/06 15:34:16 by lotoussa     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/24 21:20:12 by tduverge    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/25 17:59:40 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,7 +26,7 @@ static int		ft_ants(char **stock)
 		ft_stock(stock, line);
 		if (line[0] != '#')
 			break ;
-		free(line);
+		ft_memdel((void**)&line);
 	}
 	if (!line)
 		return (0);
@@ -34,11 +34,11 @@ static int		ft_ants(char **stock)
 		i++;
 	if (line[i])
 	{
-		free(line);
+		ft_memdel((void**)&line);
 		return (0);
 	}
 	ants = ft_atoi(line);
-	free(line);
+	ft_memdel((void**)&line);
 	return (ants > 0 ? ants : 0);
 }
 
@@ -58,36 +58,31 @@ void			ft_setid(t_list *rooms)
 int				ft_free_n_return(char *stock, char *links, int ret)
 {
 	if (stock)
-		free(stock);
+		ft_memdel((void**)&stock);
 	if (links)
-		free(links);
+		ft_memdel((void**)&links);
 	return (ret);
 }
 
-int				ft_parsing(t_room **start, t_list **rooms)
+int				ft_parsing(t_room **start, t_list **rooms, char **stock)
 {
 	int			ants;
 	char		*links;
-	char		*stock;
 
 	*start = NULL;
 	*rooms = NULL;
 	links = NULL;
-	stock = ft_memalloc(0);
-	if (!(ants = ft_ants(&stock)))
-		return (ft_free_n_return(stock, NULL, 0));
-	if (!(ft_get_rooms(rooms, start, &links, &stock)))
-		return (ft_free_n_return(stock, links, 0));
+	*stock = ft_memalloc(0);
+	if (!(ants = ft_ants(stock)))
+		return (0);
+	if (!(ft_get_rooms(rooms, start, &links, stock)))
+		return (ft_free_n_return(NULL, links, 0));
 	if (*start)
 		(*start)->ants = ants;
 	if (!(ft_check_rooms(*rooms, links)))
-		return (ft_free_n_return(stock, links, 0));
-		ft_printf("test\n");
-	if (!(ft_links(rooms, links, &stock)))
-		return (ft_free_n_return(stock, links, 0));
-		ft_printf("test\n");
-	ft_printf("%s\n", stock);
-	free(stock);
+		return (ft_free_n_return(NULL, links, 0));
+	if (!(ft_links(rooms, links, stock)))
+		return (ft_free_n_return(NULL, NULL, 0));
 	ft_setid(*rooms);
 	return (1);
 }
