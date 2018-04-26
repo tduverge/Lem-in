@@ -6,7 +6,7 @@
 /*   By: tduverge <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/04/26 11:33:46 by tduverge     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/26 11:33:46 by tduverge    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/26 11:55:48 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,7 +50,9 @@ static int	get_node(t_list **rooms, char **line, int pos, char **stock)
 	if (pos == E)
 	{
 		ft_memdel((void**)line);
-		get_next_line(0, line);
+		while (get_next_line(0, line) && **line == '#' &&
+				ft_strcmp(*line, "##start") && ft_strcmp(*line, "##end"))
+			ft_memdel((void**)line);
 		ft_stock(stock, *line);
 	}
 	if (!ft_is_valid_room(*line))
@@ -60,10 +62,7 @@ static int	get_node(t_list **rooms, char **line, int pos, char **stock)
 	x = ft_strlen(splits[1]) < 11 ? ft_atol(splits[1], 0) : (long)MA + 1;
 	y = ft_strlen(splits[2]) < 11 ? ft_atol(splits[2], 0) : (long)MA + 1;
 	if (x < MI || x > MA || y < MI || y > MA || ft_is_known(name, *rooms))
-	{
-		ft_memdel((void**)&name);
-		return (ft_free_split(NULL, splits, 0));
-	}
+		return (ft_free_split(name, splits, 0));
 	ft_lstpush(rooms, lstnew_room(name, pos == X ? X : E, x, y));
 	return (ft_free_split(*line, splits, 1));
 }
@@ -76,7 +75,9 @@ static int	get_start(t_list **rooms, char **line, t_room **start, char **stock)
 	long	y;
 
 	ft_memdel((void**)line);
-	get_next_line(0, line);
+	while (get_next_line(0, line) && **line == '#' &&
+			ft_strcmp(*line, "##start") && ft_strcmp(*line, "##end"))
+		ft_memdel((void**)line);
 	if (!(ft_stock(stock, *line)))
 		return (0);
 	if (!ft_is_valid_room(*line))
