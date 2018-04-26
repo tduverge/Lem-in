@@ -6,7 +6,7 @@
 /*   By: kbedene <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2017/12/06 11:43:59 by kbedene      #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/25 23:55:10 by tduverge    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/26 11:24:04 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,17 +70,11 @@ static int		clear_buf(int fd, t_lastbuf **lst, int ret)
 	while (tmp->fd != fd)
 		tmp = tmp->next;
 	if (tmp == *lst)
-	{
 		*lst = tmp->next;
-		ft_memdel((void**)&(tmp->lastbuf));
-		ft_memdel((void**)&tmp);
-	}
 	else
-	{
 		before->next = tmp->next;
-		ft_memdel((void**)&(tmp->lastbuf));
-		ft_memdel((void**)&tmp);
-	}
+	ft_memdel((void**)&(tmp->lastbuf));
+	ft_memdel((void**)&tmp);
 	return (ret);
 }
 
