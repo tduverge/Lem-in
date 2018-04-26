@@ -6,7 +6,7 @@
 /*   By: kbedene <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/28 09:38:27 by kbedene      #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/25 23:44:30 by tduverge    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/26 10:27:03 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@
 # include <stdarg.h>
 # define MAX(a,b) b & ((a - b) >> 31) | a & (~(a - b) >> 31)
 
-# define BUFF_SIZE 1
+# define BUFF_SIZE 1000
 
 typedef struct			s_list
 {
