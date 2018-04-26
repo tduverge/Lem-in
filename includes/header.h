@@ -6,7 +6,7 @@
 /*   By: lotoussa <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/03/06 15:26:50 by lotoussa     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/26 10:42:21 by tduverge    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/26 11:30:16 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -14,7 +14,7 @@
 #ifndef HEADER_H
 # define HEADER_H
 
-# include "../libft/libft.h"
+# include "../libft/header/libft.h"
 
 # define S 0
 # define E 1

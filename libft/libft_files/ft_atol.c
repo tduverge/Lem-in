@@ -3,15 +3,15 @@
 /*                                                              /             */
 /*   ft_atol.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: lotoussa <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*   By: tduverge <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/01/11 17:27:10 by lotoussa     #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/25 18:49:07 by tduverge    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/04/26 11:26:56 by tduverge     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/26 11:32:51 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../header/libft.h"
 
 long	ft_atol(const char *str, int *check)
 {

@@ -3,15 +3,15 @@
 /*                                                              /             */
 /*   ft_strcpy.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: kbedene <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
+/*   By: tduverge <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/27 18:37:08 by kbedene      #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/27 18:37:08 by kbedene     ###    #+. /#+    ###.fr     */
+/*   Created: 2018/04/26 11:28:29 by tduverge     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/26 11:28:29 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "stdlib.h"
+#include "../header/libft.h"
 
 char	*ft_strcpy(char *dst, const char *src)
 {

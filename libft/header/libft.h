@@ -6,7 +6,7 @@
 /*   By: kbedene <marvin@le-101.fr>                 +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/28 09:38:27 by kbedene      #+#   ##    ##    #+#       */
-/*   Updated: 2018/04/26 10:27:03 by tduverge    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/04/26 11:32:54 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -116,6 +116,7 @@ int						ft_islower(char c);
 int						ft_pow(int n, int pow);
 int						*ft_bubble_sort(int *tab, int length);
 int						*ft_merge_sort(int *tab, int length);
+long					ft_atol(const char *str, int *check);
 
 typedef enum			e_modif
 {
